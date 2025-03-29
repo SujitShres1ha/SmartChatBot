@@ -182,3 +182,8 @@
 .emergency-button:hover {
   background-color: darkred;
 }
+
+.clear {
+  background-color: rgb(202, 28, 28);
+  color: white
+}

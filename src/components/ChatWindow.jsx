@@ -92,7 +92,7 @@ const ChatWindow = () => {
 
   return (
     <div className="chat-window">
-      <button onClick={clearChatHistory}>Clear Chat</button>
+      <button onClick={clearChatHistory} className="clear">Clear Chat</button>
 
       {/* Emergency Button */}
       <button className="emergency-button" onClick={handleEmergencyClick}>
