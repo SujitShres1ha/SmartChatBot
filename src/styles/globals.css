@@ -187,3 +187,12 @@
   background-color: rgb(202, 28, 28);
   color: white
 }
+
+body {
+  /* ...existing code... */
+  background-image: url('../assets/background2.jpg');
+  background-size: cover; /* Ensures the image covers the entire area */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-position: center; /* Centers the image */
+  /* ...existing code... */
+}
