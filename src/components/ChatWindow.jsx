@@ -32,6 +32,94 @@ const ChatWindow = () => {
     }
   };
 
+  const handleHospitalButton = async () => {
+    const automatedMessage = { sender: "user", text: "What are the best hospitals in Arlington?" };
+    setMessages((prev) => [...prev, automatedMessage]);
+
+    try {
+      setIsTyping(true); // Show typing indicator
+
+      // Send automated message to backend
+      const response = await axios.post("/api/queryResponse", { messages: [...messages, automatedMessage] });
+
+      // Extract bot response and update chat history
+      const botMessage = { sender: "model", text: response.data };
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Error fetching bot response:", error);
+      const errorMessage = { sender: "model", text: "Sorry, I couldn't process your request." };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false); // Hide typing indicator
+    }
+  }
+
+  const handlePoliceStationButton = async () => {
+    const automatedMessage = { sender: "user", text: "Where are the nearest police stations?" };
+    setMessages((prev) => [...prev, automatedMessage]);
+
+    try {
+      setIsTyping(true); // Show typing indicator
+
+      // Send automated message to backend
+      const response = await axios.post("/api/queryResponse", { messages: [...messages, automatedMessage] });
+
+      // Extract bot response and update chat history
+      const botMessage = { sender: "model", text: response.data };
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Error fetching bot response:", error);
+      const errorMessage = { sender: "model", text: "Sorry, I couldn't process your request." };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false); // Hide typing indicator
+    }
+  };
+
+  const handleBusStopsButton = async () => {
+    const automatedMessage = { sender: "user", text: "Where are the nearest bus stops?" };
+    setMessages((prev) => [...prev, automatedMessage]);
+
+    try {
+      setIsTyping(true); // Show typing indicator
+
+      // Send automated message to backend
+      const response = await axios.post("/api/queryResponse", { messages: [...messages, automatedMessage] });
+
+      // Extract bot response and update chat history
+      const botMessage = { sender: "model", text: response.data };
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Error fetching bot response:", error);
+      const errorMessage = { sender: "model", text: "Sorry, I couldn't process your request." };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false); // Hide typing indicator
+    }
+  };
+
+  const handleRestaurantsButton = async () => {
+    const automatedMessage = { sender: "user", text: "What are the popular restaurants nearby?" };
+    setMessages((prev) => [...prev, automatedMessage]);
+
+    try {
+      setIsTyping(true); // Show typing indicator
+
+      // Send automated message to backend
+      const response = await axios.post("/api/queryResponse", { messages: [...messages, automatedMessage] });
+
+      // Extract bot response and update chat history
+      const botMessage = { sender: "model", text: response.data };
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Error fetching bot response:", error);
+      const errorMessage = { sender: "model", text: "Sorry, I couldn't process your request." };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false); // Hide typing indicator
+    }
+  };
+
   return (
     <div className="chat-window">
       {/* Chat History */}
@@ -42,6 +130,14 @@ const ChatWindow = () => {
           </div>
         ))}
         {isTyping && <div className="chat-bubble model">Typing...</div>}
+      </div>
+
+      {/* automated hospital button */}
+      <div className="chat-actions">
+        <button onClick={handleHospitalButton}>Best Hospitals in Arlington</button>
+        <button onClick={handlePoliceStationButton}>Nearest Police Stations</button>
+        <button onClick={handleBusStopsButton}>Nearest Bus Stops</button>
+        <button onClick={handleRestaurantsButton}>Popular Restaurants Nearby</button>
       </div>
 
       {/* Input Field */}

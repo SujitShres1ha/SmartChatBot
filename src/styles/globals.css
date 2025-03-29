@@ -72,3 +72,43 @@ body {
   padding: 8px;
 }
 
+.chat-actions button {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px; /* Padding for size */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.chat-actions button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.chat-actions {
+  margin-bottom: 10px; /* Add spacing below the button */
+  text-align: center; /* Center the button */
+}
+
+.chat-actions button {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 20px; /* Rounded corners */
+  padding: 5px 10px; /* Smaller padding for size */
+  font-size: 14px; /* Smaller font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+  margin: 5px; /* Add spacing between buttons */
+}
+
+.chat-actions button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.chat-actions {
+  text-align: center; /* Center the buttons */
+  margin-bottom: 10px; /* Add spacing below the buttons */
+}
