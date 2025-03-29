@@ -120,6 +120,37 @@ const ChatWindow = () => {
     }
   };
 
+  const handleSpeechToText = () => {
+    if (!("webkitSpeechRecognition" in window)) {
+      alert("Your browser does not support speech recognition. Please use Chrome or Firefox.");
+      return;
+    }
+    const recognition = new window.webkitSpeechRecognition();
+    recognition.lang = "en-US"; // Set language
+    recognition.interimResults = false; // Only final results
+    recognition.maxAlternatives = 1; // Limit to one result
+
+    recognition.onstart = () => {
+      console.log("Speech recognition started...");
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript; // Get the recognized text
+      setUserInput(transcript); // Populate the input field with the recognized text
+    };
+
+    recognition.onerror = (event) => {
+      console.error("Speech recognition error:", event.error);
+    };
+
+    recognition.onend = () => {
+      console.log("Speech recognition ended.");
+    };
+
+    recognition.start(); // Start speech recognition
+  };
+    
+
   return (
     <div className="chat-window">
       {/* Chat History */}
@@ -149,6 +180,7 @@ const ChatWindow = () => {
           placeholder="Type your message..."
         />
         <button onClick={handleSendMessage}>Send</button>
+        <button onClick={handleSpeechToText}>🎤</button> {/* Speech-to-text button */}
       </div>
     </div>
   );

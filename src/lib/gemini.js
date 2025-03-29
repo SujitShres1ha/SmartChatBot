@@ -9,7 +9,7 @@ export default async function gemini(messages) {
     // Format context with sender roles
     const locationContext = `Imagine you are an expert living in Arlington, Texas. Do not say you are an Arlington resident and keep your answers to a few sentences. Answer the following questions from the perspective of someone in Arlington: The user responses are for you to look only.\n\n`
     const formattedMessages = messages.map((message) =>
-      `${message.sender === "user" ? "User:" : "Bot:"} ${message.text}`
+      `${message.sender === "user" ? "User:" : ""} ${message.text}`
     ).join("\n");
 
     const context =  `${locationContext}${formattedMessages}`;
