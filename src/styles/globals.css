@@ -112,3 +112,23 @@ body {
   text-align: center; /* Center the buttons */
   margin-bottom: 10px; /* Add spacing below the buttons */
 }
+
+.emergency-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+.emergency-button:hover {
+  background-color: darkred;
+}

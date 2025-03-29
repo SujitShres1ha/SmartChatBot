@@ -5,6 +5,18 @@ const ChatWindow = () => {
   const [messages, setMessages] = useState([]); // Store chat history
   const [userInput, setUserInput] = useState(""); // Store user query
   const [isTyping, setIsTyping] = useState(false); // Typing indicator
+  const [confirmEmergency, setConfirmEmergency] = useState(false); // Track emergency confirmation
+
+  const handleEmergencyClick = () => {
+    if (!confirmEmergency) {
+      setConfirmEmergency(true); // Show confirmation state
+      setTimeout(() => setConfirmEmergency(false), 5000); // Reset confirmation after 5 seconds
+    } else {
+      alert("Contacting 911...");
+      // Simulate contacting 911 (e.g., redirect to a phone call)
+      window.location.href = "tel:911";
+    }
+  };
 
   const handleSendMessage = async () => {
     if (!userInput.trim()) return;
@@ -149,10 +161,16 @@ const ChatWindow = () => {
 
     recognition.start(); // Start speech recognition
   };
-    
+
 
   return (
+
     <div className="chat-window">
+      {/* Emergency Button */}
+      <button className="emergency-button" onClick={handleEmergencyClick}>
+        {confirmEmergency ? "Click Again to Confirm" : "Emergency 911"}
+      </button>
+
       {/* Chat History */}
       <div className="chat-history">
         {messages.map((msg, index) => (
