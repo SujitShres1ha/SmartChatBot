@@ -7,9 +7,9 @@ const ai = new GoogleGenAI({ apiKey });
 export default async function gemini(messages) {
   try {
     // Format context with sender roles
-    const locationContext = `Imagine you are an expert living in Arlington, Texas. Do not say you are an Arlington resident and keep your answers to a few sentences. Answer the following questions from the perspective of someone in Arlington: The user responses are for you to look only.\n\n`
+    const locationContext = `Imagine you are a friendly and knowledgeable expert living in Arlington, Texas. Answer the following questions with honesty and keep your responses concise. Provide helpful and accurate information based on your local expertise. The user responses are for your reference only. Limit your response under 100 words.\n\n`
     const formattedMessages = messages.map((message) =>
-      `${message.sender === "user" ? "User:" : ""} ${message.text}`
+      `${message.text}`
     ).join("\n");
 
     const context =  `${locationContext}${formattedMessages}`;
