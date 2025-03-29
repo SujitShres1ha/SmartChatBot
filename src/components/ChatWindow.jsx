@@ -125,7 +125,16 @@ const ChatWindow = () => {
 
       {/* Input Section */}
       <div className="chat-input">
-        <input type="text" value={userInput} onChange={(e) => setUserInput(e.target.value)} placeholder="Type your message..." />
+        <input 
+          type="text" 
+          value={userInput} 
+          onChange={(e) => setUserInput(e.target.value)} 
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSendMessage()
+            }
+          }}
+          placeholder="Type your message..." />
         <button onClick={handleSendMessage}>Send</button>
         <button onClick={handleSpeechToText}>🎤</button>
       </div>
